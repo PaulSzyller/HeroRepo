@@ -13,14 +13,12 @@ class HeroServiceSpec extends Specification {
     SessionFactory sessionFactory
 
     private Long setupData() {
-        // TODO: Populate valid domain instances and return a valid ID
-        //new Hero(...).save(flush: true, failOnError: true)
-        //new Hero(...).save(flush: true, failOnError: true)
-        //Hero hero = new Hero(...).save(flush: true, failOnError: true)
-        //new Hero(...).save(flush: true, failOnError: true)
-        //new Hero(...).save(flush: true, failOnError: true)
-        assert false, "TODO: Provide a setupData() implementation for this generated test suite"
-        //hero.id
+        Hero hero = new Hero(name: 'Samwise', title: 'the Brave', race: 'Halfling', gender: 'Male', age: 36, heroClass: 'Bard').save(flush: true, failOnError: true)
+        new Hero(name: 'Aragorn', title: 'Elessar', race: 'Dwarf', gender: 'Male', age: 88, heroClass: 'Ranger').save(flush: true, failOnError: true)
+        new Hero(name: 'Gimli', title: 'Elf Friend', race: 'Dwarf', gender: 'Male', age: 140, heroClass: 'Barbarian').save(flush: true, failOnError: true)
+        new Hero(name: 'Legolas', title: null, race: 'Elf', gender: 'Male', age: 800, heroClass: 'Ranger').save(flush: true, failOnError: true)
+        new Hero(name: 'Arwen', title: null, race: 'Dwarf', gender: 'Female', age: 2778, heroClass: 'Ranger').save(flush: true, failOnError: true)
+        hero.id
     }
 
     void "test get"() {
@@ -38,7 +36,8 @@ class HeroServiceSpec extends Specification {
 
         then:
         heroList.size() == 2
-        assert false, "TODO: Verify the correct instances are returned"
+        heroList.get(0).name == 'Gimli'
+        heroList.get(1).name == 'Legolas'
     }
 
     void "test count"() {
@@ -64,8 +63,7 @@ class HeroServiceSpec extends Specification {
 
     void "test save"() {
         when:
-        assert false, "TODO: Provide a valid instance to save"
-        Hero hero = new Hero()
+        Hero hero =  new Hero(name: 'Theoden', title: 'Horsemaster', race: 'Human', gender: 'Male', age: 71, heroClass: 'Paladin')
         heroService.save(hero)
 
         then:

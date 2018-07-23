@@ -3,7 +3,7 @@
 ### Technologies
 - language: Groovy
 - framework: Grails
-- database: in-memory (Grails)
+- database: in-memory (h2)
 - testing: Spock
 
 ### Routes Available
